@@ -9,29 +9,21 @@ const House = (props) => {
         <>
      <div className="row">
         <div className="col-sm-6">
-           <b>{props.houseinfo.address}</b>
+           <h2>{props.houseinfo.address}</h2>
            {/* <b>{address</b> */}
-
         </div>
-
         <div className="col-sm-6">
            <b>Price: USD {props.houseinfo.price}</b>
            {/* <b>Price: USD price</b> */}
-
         </div>
-
     </div> 
 
     <div className="row">
         <div className="col-sm-6">
            <img className="img-fluid" src={'/imgs/'+ props.houseinfo.photo} alt="house"/>
-
         </div>
-
         <div className="col-sm-6">
            <p>{props.houseinfo.description}</p>
-           {/* <p>description</p> */}
-
         </div>
 
     </div>

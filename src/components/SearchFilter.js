@@ -6,13 +6,11 @@ const SearchFilter = (props) => {
 
     console.log(props);
     //array of distinct counties
-   let arr =  props.houses.map((elem)=> elem.county);
-       console.log(arr);
+     let arr =  props.houses.map((elem)=> elem.county);
+       console.log("all counties: " + arr);
 
      let distinctCounties= Array.from(new Set([...arr]));
-     console.log(distinctCounties);
-    
-
+     console.log("distinctCounties: " + distinctCounties);
 
 
     //before return must get render thing need
@@ -22,8 +20,6 @@ const SearchFilter = (props) => {
     //synthetic event
     let changeHandler=(e)=>{ 
         console.log('select!'+ e.target.value);
-     
-        
         navigate(`/searchresults/${e.target.value}`);
 
     }

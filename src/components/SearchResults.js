@@ -16,9 +16,9 @@ const SearchResults = (props) => {
             const paramsObj = useParams();
             console.log(paramsObj);
             //filter and get an array
-            let filteredHousesArray = props.houses.filter( (elem) => elem.county === paramsObj.county );
+            let filteredHousesArray = props.houses.filter( (elem) => elem.county == paramsObj.county );
             console.log(filteredHousesArray);
-
+            
 
     return (
         <div className="row">
@@ -37,9 +37,7 @@ const SearchResults = (props) => {
                                return <SearchResultsRow house={elem}/>//higher order component
                         }
                         )}
-                     
-                       
-                    </tbody>
+                   </tbody>
                 </table>
             </div>
            

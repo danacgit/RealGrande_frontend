@@ -1,6 +1,26 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+
 const Header = () => {    
-    return (
+    let navigate = useNavigate();
+    let logoutHandler = () => {
+        // localStorage.clear();
+        // sessionStorage.clear();
+        sessionStorage.removeItem('custname');
+        sessionStorage.removeItem('custemail');
+        // localStorage.removeItem('custname');
+        // localStorage.removeItem('custemail');
+        navigate('/')
+    }
+
+    let loginHandler = () =>{
+        navigate('/login');
+    }
+
+    let signUpHandler = () =>{
+        navigate('/signup');
+    }
+    
+     return (
             <div className="row bg-warning d-flex align-items-center">
                 <div className="col-sm-3">
                    <Link to="/">  <img className="logo" src="/imgs/logo.png" alt="logo here"/> </Link>
@@ -9,11 +29,23 @@ const Header = () => {
                     <p className="m-0 tagline"> Your real estate destination!</p>
                 </div>
                 <div className="col-sm-4">
-                    <Link to="/login"> <button className="btn btn-primary mx-3"> Login </button> </Link>
-                    <Link to="/signup">  <button className="btn btn-success"> SignUp </button> </Link>
-                </div>
+                    {
+                    // (localStorage.getItem('custname')) ?
+                    (sessionStorage.getItem('custname')) ?
+                        <>
+                            {/* <h6> Welcome { localStorage.getItem('custname') }! </h6> */}
+                            <h5> Welcome { sessionStorage.getItem('custname') }! </h5>
+                            <button onClick={logoutHandler} className="btn btn-danger mx-3"> Logout </button>
+                        </>
+                      :
+                        <>
+                            <button className="btn btn-primary mx-3" onClick={loginHandler}> Login</button>
+                            <button className="btn btn-success" onClick={signUpHandler}> SignUp </button>
+                        </>
+                    }
+                     </div>
                
             {/* <h1 className="bg-warning"> Header!</h1>  */}
             </div> );
 }
- export default Header ;
+export default Header;
